@@ -8,11 +8,11 @@ for (var i = 0; i < lesEleves.length; i++) {
 
     var liAll = document.createElement("li") // Créer un element li
     liAll.innerHTML = // Insert données dans li
-        "<button type='button' class='btn btn-primary' id='" + i + "'>" + // Insert un button avec event id onclick
+        "<li><a class='alert-link' id='" + i + "'>" + // Insert un button avec event id onclick
         lesEleves[i].nom.toUpperCase() + " " + // Nom en majuscule
         lesEleves[i].prénom.substr(0, 1).toUpperCase() + // Premiere lettre prenom majuscule
         lesEleves[i].prénom.substr(1, lesEleves[i].prénom.length).toLowerCase() +
-        "</button><br>"; // Reste du prenom en minuscule
+        "</a></li><br>"; // Reste du prenom en minuscule
     var containerLiAll = document.getElementById("all"); // Recupere le container ul
     containerLiAll.appendChild(liAll); // Ajouter le li dans le container ul
     console.log(i); // Verif de l'id de tous les buttons
@@ -26,19 +26,19 @@ function getOneProfil(i) { // Fonction pour créer les miniatures
 
     var liOne = document.createElement("li") // Créer un element li
     liOne.innerHTML = // Insert données dans li
-        "<li class='list-group-item'id=" + " '" + i + "'><b>" + "Nom: " + "</b> <p>" + lesEleves[i].nom + "</p> </li>" + // Insert des li pour chaque proprietes
-        "<li class='list-group-item'id=" + " '" + i + "'><b>" + "Prenom: " + "</b> <p>" + lesEleves[i].prénom + "</p> </li>" +
-        "<li class='list-group-item'id=" + " '" + i + "'><b>" + "Age: " + "</b> <p>" + lesEleves[i].age + "</p> </li>" +
-        "<li class='list-group-item'id=" + " '" + i + "'><b>" + "Ville: " + "</b> <p>" + lesEleves[i].ville + "</p> </li>" +
-        "<li class='list-group-item'id=" + " '" + i + "'><b>" + "Javascript: " + "</b> <p>" + lesEleves[i].javascript + "</p> </li>" +
-        "<li class='list-group-item'id=" + " '" + i + "'><b>" + "Avant l\'IFA: " + "</b> <p>" + lesEleves[i].before_ifa + "</p> </li>" +
-        "<li class='list-group-item'id=" + " '" + i + "'><b>" + "Pourquoi l\'IFA: " + "</b> <p>" + lesEleves[i].why_ifa + "</p> </li>" +
-        "<li class='list-group-item'id=" + " '" + i + "'><b>" + "Application favorite: " + "</b> <p>" + lesEleves[i].fav_app + "</p> </li>" +
-        "<li class='list-group-item'id=" + " '" + i + "'><b>" + "Pourquoi application favorite: " + "</b> <p>" + lesEleves[i].fav_app_why + "</p> </li>" +
-        "<li class='list-group-item'id=" + " '" + i + "'><b>" + "Site favoris: " + "</b> <p>" + lesEleves[i].fav_web + "</p> </li>" +
-        "<li class='list-group-item'id=" + " '" + i + "'><b>" + "Pourquoi site favoris: " + "</b> <p>" + lesEleves[i].fav_web_why + "</p> </li>" +
-        "<li class='list-group-item'id=" + " '" + i + "'><b>" + "Mail: " + "</b> <p>" + lesEleves[i].contact_mail + "</p> </li>" +
-        "<a type='button' id='return' href='index.html'>" + "Retour" + "</a>";
+        "<li class='list-group-item'id=" + " '" + i + "'><p><b>Nom: </b> " + lesEleves[i].nom + "</p> </li>" + // Insert des li pour chaque proprietes
+        "<li class='list-group-item'id=" + " '" + i + "'><p><b>Prénom: </b>" + lesEleves[i].prénom + "</p> </li>" +
+        "<li class='list-group-item'id=" + " '" + i + "'><p><b>Age: </b>" + lesEleves[i].age + "</p> </li>" +
+        "<li class='list-group-item'id=" + " '" + i + "'><p><b>Ville: </b>" + lesEleves[i].ville + "</p> </li>" +
+        "<li class='list-group-item'id=" + " '" + i + "'><p><b>Javascript: </b>" + lesEleves[i].javascript + "</p> </li>" +
+        "<li class='list-group-item'id=" + " '" + i + "'><p><b>Avant l\'IFA: </b>" + lesEleves[i].before_ifa + "</p> </li>" +
+        "<li class='list-group-item'id=" + " '" + i + "'><p><b>Pourquoi l\'IFA: </b>" + lesEleves[i].why_ifa + "</p> </li>" +
+        "<li class='list-group-item'id=" + " '" + i + "'><p><b>Application favorite: </b>" + lesEleves[i].fav_app + "</p> </li>" +
+        "<li class='list-group-item'id=" + " '" + i + "'><p><b>Pourquoi application favorite: </b>" + lesEleves[i].fav_app_why + "</p> </li>" +
+        "<li class='list-group-item'id=" + " '" + i + "'><p><b>Site favoris:</b> " + lesEleves[i].fav_web + "</p> </li>" +
+        "<li class='list-group-item'id=" + " '" + i + "'><p><b>Pourquoi site favoris: </b>" + lesEleves[i].fav_web_why + "</p> </li>" +
+        "<li class='list-group-item'id=" + " '" + i + "'><p><b>Mail: </b>" + lesEleves[i].contact_mail + "</p> </li>" +
+        "<a type='button' id='return' class='btn btn-secondary btn-block' href='index.html'>" + "Retour" + "</a>";
     var containerLiOne = document.getElementById("one"); // Recupere le container ul
     containerLiOne.appendChild(liOne); // Ajouter le li dans le container ul
 }
@@ -47,7 +47,7 @@ function getOneProfil(i) { // Fonction pour créer les miniatures
  ** Affiche un profil sur clic d'un eleve
  */
 
-$(".btn").click(function(event) {
+$("a").click(function(event) {
     var idBtn = event.target.id;
     console.log(idBtn);
      // url = "one.html";
