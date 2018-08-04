@@ -1,62 +1,74 @@
-var lesEleves = listeEleves; // Initialisation et affectation du JSON
+// Tri ordre alphabetique
 
-for (var i = 0; i < lesEleves.length; i++) {
+function tri(a, b)
 
-    /*
-     ** Creation de la liste des eleves
-     */
+{
 
-    var liAll = document.createElement("li") // Créer un element li
-    liAll.innerHTML = // Insert données dans li
-        "<li><a class='alert-link' id='" + i + "'>" + // Insert un button avec event id onclick
-        lesEleves[i].nom.toUpperCase() + " " + // Nom en majuscule
-        lesEleves[i].prénom.substr(0, 1).toUpperCase() + // Premiere lettre prenom majuscule
-        lesEleves[i].prénom.substr(1, lesEleves[i].prénom.length).toLowerCase() +
-        "</a></li><br>"; // Reste du prenom en minuscule
-    var containerLiAll = document.getElementById("all"); // Recupere le container ul
-    containerLiAll.appendChild(liAll); // Ajouter le li dans le container ul
-    console.log(i); // Verif de l'id de tous les buttons
+     return (a.nom > b.nom) ? 1 : -1;
+
 }
 
-/*
- ** Creation de la liste du profil d'un eleve
- */
+var lesEleves = listeEleves;
 
-function getOneProfil(i) { // Fonction pour créer les miniatures
+lesEleves.sort(tri);
 
-    var liOne = document.createElement("li") // Créer un element li
-    liOne.innerHTML = // Insert données dans li
-        "<li class='list-group-item'id=" + " '" + i + "'><p><b>Nom: </b> " + lesEleves[i].nom + "</p> </li>" + // Insert des li pour chaque proprietes
-        "<li class='list-group-item'id=" + " '" + i + "'><p><b>Prénom: </b>" + lesEleves[i].prénom + "</p> </li>" +
-        "<li class='list-group-item'id=" + " '" + i + "'><p><b>Age: </b>" + lesEleves[i].age + "</p> </li>" +
-        "<li class='list-group-item'id=" + " '" + i + "'><p><b>Ville: </b>" + lesEleves[i].ville + "</p> </li>" +
-        "<li class='list-group-item'id=" + " '" + i + "'><p><b>Javascript: </b>" + lesEleves[i].javascript + "</p> </li>" +
-        "<li class='list-group-item'id=" + " '" + i + "'><p><b>Avant l\'IFA: </b>" + lesEleves[i].before_ifa + "</p> </li>" +
-        "<li class='list-group-item'id=" + " '" + i + "'><p><b>Pourquoi l\'IFA: </b>" + lesEleves[i].why_ifa + "</p> </li>" +
-        "<li class='list-group-item'id=" + " '" + i + "'><p><b>Application favorite: </b>" + lesEleves[i].fav_app + "</p> </li>" +
-        "<li class='list-group-item'id=" + " '" + i + "'><p><b>Pourquoi application favorite: </b>" + lesEleves[i].fav_app_why + "</p> </li>" +
-        "<li class='list-group-item'id=" + " '" + i + "'><p><b>Site favoris:</b> " + lesEleves[i].fav_web + "</p> </li>" +
-        "<li class='list-group-item'id=" + " '" + i + "'><p><b>Pourquoi site favoris: </b>" + lesEleves[i].fav_web_why + "</p> </li>" +
-        "<li class='list-group-item'id=" + " '" + i + "'><p><b>Mail: </b>" + lesEleves[i].contact_mail + "</p> </li>" +
-        "<a type='button' id='return' class='btn btn-secondary btn-block' href='index.html'>" + "Retour" + "</a>";
-    var containerLiOne = document.getElementById("one"); // Recupere le container ul
-    containerLiOne.appendChild(liOne); // Ajouter le li dans le container ul
+// Creation de la liste des eleves
+
+for (var i = 0; i < lesEleves.length; i++)
+
+{
+
+     var liAll = document.createElement("li");
+     liAll.innerHTML =
+          "<li><a class='list-group-item list-group-item-action list-group-item-light link' id='" + i + "'>" +
+          lesEleves[i].nom.toUpperCase() + " " +
+          lesEleves[i].prénom.substr(0, 1).toUpperCase() +
+          lesEleves[i].prénom.substr(1, lesEleves[i].prénom.length).toLowerCase() +
+          "</a></li>";
+     var containerLiAll = document.getElementById("all");
+     containerLiAll.appendChild(liAll);
+
 }
 
-/*
- ** Affiche un profil sur clic d'un eleve
- */
+// Creation du profil
 
-$("a").click(function(event) {
-    var idBtn = event.target.id;
-    console.log(idBtn);
-     // url = "one.html";
-     // window.location.replace(url);
-     window.document.getElementById("all").remove();
-    getOneProfil(idBtn);
-});
+function getOneProfil(i)
 
-// function retour() {
-//     url = "index.html";
-//     window.location.replace(url);
-// }
+{
+
+     var title = document.createElement("h2");
+     title.innerHTML = "<h2>Profil de " + lesEleves[i].prénom.substr(0, 1).toUpperCase() + lesEleves[i].prénom.substr(1, lesEleves[i].prénom.length).toLowerCase() + " " + lesEleves[i].nom.toUpperCase() + "</h2>";
+     var divTitle = document.getElementById("titles");
+     divTitle.appendChild(title);
+
+     var liOne = document.createElement("li");
+     liOne.innerHTML =
+          "<li class='list-group-item list-group-item-action list-group-item-light'id='" + i + "'><p><b>Nom: </b> " + lesEleves[i].nom + "</p> </li>" +
+          "<li class='list-group-item list-group-item-action list-group-item-light'id='" + i + "'><p><b>Prénom: </b>" + lesEleves[i].prénom + "</p> </li>" +
+          "<li class='list-group-item list-group-item-action list-group-item-light'id='" + i + "'><p><b>Age: </b>" + lesEleves[i].age + "</p> </li>" +
+          "<li class='list-group-item list-group-item-action list-group-item-light'id='" + i + "'><p><b>Ville: </b>" + lesEleves[i].ville + "</p> </li>" +
+          "<li class='list-group-item list-group-item-action list-group-item-light'id='" + i + "'><p><b>Javascript: </b>" + lesEleves[i].javascript + "</p> </li>" +
+          "<li class='list-group-item list-group-item-action list-group-item-light'id='" + i + "'><p><b>Avant l\'IFA: </b>" + lesEleves[i].before_ifa + "</p> </li>" +
+          "<li class='list-group-item list-group-item-action list-group-item-light'id='" + i + "'><p><b>Pourquoi l\'IFA: </b>" + lesEleves[i].why_ifa + "</p> </li>" +
+          "<li class='list-group-item list-group-item-action list-group-item-light'id='" + i + "'><p><b>Application favorite: </b>" + lesEleves[i].fav_app + "</p> </li>" +
+          "<li class='list-group-item list-group-item-action list-group-item-light'id='" + i + "'><p><b>Pourquoi application favorite: </b>" + lesEleves[i].fav_app_why + "</p> </li>" +
+          "<li class='list-group-item list-group-item-action list-group-item-light'id='" + i + "'><p><b>Site favoris: </b> " + lesEleves[i].fav_web + "</p> </li>" +
+          "<li class='list-group-item list-group-item-action list-group-item-light'id='" + i + "'><p><b>Pourquoi site favoris: </b>" + lesEleves[i].fav_web_why + "</p> </li>" +
+          "<li class='list-group-item list-group-item-action list-group-item-light'id='" + i + "'><p><b>Mail: </b>" + lesEleves[i].contact_mail + "</p> </li>" +
+          "<a type='button' id='return' class='btn btn-secondary btn-lg btn-block' href='index.html'>" + "Retour" + "</a>";
+     var containerLiOne = document.getElementById("one");
+     containerLiOne.appendChild(liOne);
+
+     $('h2').replaceAll('h1');
+
+}
+
+// Affiche un profil sur clic
+
+$(".link").click(function(event)
+
+     {
+          var idBtn = event.target.id;
+          window.document.getElementById("all").remove();
+          getOneProfil(idBtn);
+     });

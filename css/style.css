@@ -1,27 +1,50 @@
 * {
-	box-sizing: border-box;
-	font-weight: bold;
-	font-family: roboto;
+     box-sizing: border-box;
+     font-family: verdana;
+     overflow-x: hidden;
 }
 
 body {
-	margin: auto;
+     margin: auto;
 }
 
-h1 {
-  color: grey;
-  text-align: center;
-  text-transform: uppercase;
+div#titles {
+     background-color: #000000;
+     border-radius: 5px;
 }
 
-li {
-	list-style: none;
+h1, h2 {
+     position: relative;
+     top: 25px;
+     color: white;
+     text-transform: uppercase;
+     text-align: center;
+	font-size: 28px;
 }
 
-p {
-	color: blue;
+ul#one {
+     text-align: left;
 }
 
-b {
-	color: black;
+ul#one p {
+     color: blue;
+     font-weight: 100;
+}
+
+ul#one b {
+     color: black;
+}
+
+ul {
+     text-align: center;
+}
+
+ul li {
+     font-size: 18px;
+}
+
+[type=reset], [type=submit], button, html [type=button] {
+     -webkit-appearance: none;
+     background-color: #000000;
+	font-size: 28px;
 }
